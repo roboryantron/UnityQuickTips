@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/PrefabApplyProtection/PrefabApplyProtectionA.unity
+    guid: cafab5c67087982459967fdc24381dda
+  - enabled: 1
+    path: Assets/PrefabApplyProtection/PrefabApplyProtectionB.unity
+    guid: f2ea50e2dce7ad54c9d2369cb4491934
