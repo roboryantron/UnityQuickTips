@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/PrefabApplyProtection/PrefabApplyProtectionB.unity
     guid: f2ea50e2dce7ad54c9d2369cb4491934
+  - enabled: 1
+    path: Assets/PrefabApplyProtection/PrefabApplyProtectionC.unity
+    guid: 23f06c42b2b52744dbd87b5b15e3a57c

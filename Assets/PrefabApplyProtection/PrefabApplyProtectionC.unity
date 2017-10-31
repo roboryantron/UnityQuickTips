@@ -276,11 +276,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4005886611238516, guid: f7256ac58f97dbb408297c51ac13d31d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4005886611238516, guid: f7256ac58f97dbb408297c51ac13d31d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.8
       objectReference: {fileID: 0}
     - target: {fileID: 4005886611238516, guid: f7256ac58f97dbb408297c51ac13d31d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -310,12 +310,12 @@ Prefab:
         type: 2}
       propertyPath: DestinationScene
       value: 
-      objectReference: {fileID: 102900000, guid: 23f06c42b2b52744dbd87b5b15e3a57c,
+      objectReference: {fileID: 102900000, guid: cafab5c67087982459967fdc24381dda,
         type: 3}
     - target: {fileID: 114744639023932096, guid: f7256ac58f97dbb408297c51ac13d31d,
         type: 2}
       propertyPath: DestinationSceneName
-      value: PrefabApplyProtectionC
+      value: PrefabApplyProtectionA
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f7256ac58f97dbb408297c51ac13d31d, type: 2}
@@ -387,8 +387,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: In most cases, each instance of the portal prefab should point to a different
-    scene, so we do not want the destination scene to get stored on the prefab.
+  m_Text: Implementing ISerializationCallbackReceiver.OnBeforeSerialize lets us prevent
+    the destination scene from being saved into the portal prefab. This makes it easier
+    to find bugs since incorrectly set-up portals will have invalid data (a null scene)
+    rather than wrong data (that some jerk pushed with Apply).
 --- !u!222 &1222663484
 CanvasRenderer:
   m_ObjectHideFlags: 0
