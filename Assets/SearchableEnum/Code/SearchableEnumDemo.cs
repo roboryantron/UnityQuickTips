@@ -7,11 +7,11 @@ namespace RoboRyanTron.SearchableEnum
     public class SearchableEnumDemo : ScriptableObject
     {
         [SearchableEnum]
-        public KeyCode KeyCode;
+        public KeyCode AwesomeKeyCode;
     
+        public KeyCode LameKeyCode;
+        
         [SearchableEnum]
         public XRNode Node;
-
-        public KeyCode OtherKeyCode;
     }
 }
