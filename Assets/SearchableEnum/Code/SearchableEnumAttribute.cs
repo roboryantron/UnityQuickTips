@@ -9,8 +9,9 @@ using UnityEngine;
 namespace RoboRyanTron.SearchableEnum
 {
     /// <summary>
-    /// An attribute meant to be applied to serializeable enum fields that will
-    /// display an enum selector that is searchable with a string filter. 
+    /// Put this attribute on a public (or SerialzeField) enum in a
+    /// MonoBehaviour or ScriptableObject to get an improved enum selector
+    /// popup. The enum list is scrollable and can be filtered by typing.
     /// </summary>
     [AttributeUsage(AttributeTargets.Field)]
     public class SearchableEnumAttribute : PropertyAttribute {}
