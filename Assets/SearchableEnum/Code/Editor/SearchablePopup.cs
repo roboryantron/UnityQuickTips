@@ -181,9 +181,12 @@ namespace RoboRyanTron.SearchableEnum.Editor
             GUI.FocusControl("enumsearchtext");
             GUI.SetNextControlName("enumsearchtext");
             string newText = GUI.TextField(searchRect, list.Filter, search);
-            
+
             if (list.UpdateFilter(newText))
+            {
+                hoverIndex = 0;
                 scroll = Vector2.zero;
+            }
 
             searchRect.x = searchRect.xMax;
             searchRect.width = cancel.fixedWidth;
@@ -278,8 +281,11 @@ namespace RoboRyanTron.SearchableEnum.Editor
 
                 if (Event.current.keyCode == KeyCode.Return)
                 {
-                    onSelectionMade(list.Entries[hoverIndex].index);
-                    EditorWindow.focusedWindow.Close();
+                    if (hoverIndex >= 0 && hoverIndex < list.Entries.Count)
+                    {
+                        onSelectionMade(list.Entries[hoverIndex].index);
+                        EditorWindow.focusedWindow.Close();
+                    }
                 }
 
                 if (Event.current.keyCode == KeyCode.Escape)
