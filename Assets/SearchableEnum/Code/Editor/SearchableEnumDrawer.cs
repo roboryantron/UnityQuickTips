@@ -16,13 +16,17 @@ namespace RoboRyanTron.SearchableEnum.Editor
     [CustomPropertyDrawer(typeof(SearchableEnumAttribute))]
     public class SearchableEnumDrawer : PropertyDrawer
     {
-        // TODO: for keycode, add a button to listen for next keycode
-        
         private const string TYPE_ERROR =
             "SearchableEnum can only be used on enum fields.";
+
+        /// <summary>
+        /// Cache of the hash to use to resolve the ID for the drawer.
+        /// </summary>
+        private int idHash;
         
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            // If this is not used on an eunum, show an error
             if (property.type != "Enum")
             {
                 GUIStyle errorStyle = "CN EntryErrorIconSmall";
@@ -34,12 +38,18 @@ namespace RoboRyanTron.SearchableEnum.Editor
                 return;
             }
             
-            int id = GUIUtility.GetControlID("SearchableEnumDrawer".GetHashCode(), FocusType.Keyboard, Rect.zero);
+            // By manually creating the control ID, we can keep the ID for the
+            // label and button the same. This lets them be selected together
+            // with the keyboard in the inspector, much like a normal popup.
+            if (idHash == 0) idHash = "SearchableEnumDrawer".GetHashCode();
+            int id = GUIUtility.GetControlID(idHash, FocusType.Keyboard, position);
             
             label = EditorGUI.BeginProperty(position, label, property);
             position = EditorGUI.PrefixLabel(position, id, label);
-            
-            if (DropdownButton(id, position, new GUIContent(property.enumDisplayNames[property.enumValueIndex])))
+
+            GUIContent buttonText = 
+                new GUIContent(property.enumDisplayNames[property.enumValueIndex]);
+            if (DropdownButton(id, position, buttonText))
             {
                 Action<int> onSelect = i =>
                 {
